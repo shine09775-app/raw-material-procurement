@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { AppDataProvider } from './context/AppDataContext'
+import { FilterProvider } from './context/FilterContext'
 import TopBar from './components/layout/TopBar'
 import TabNav from './components/layout/TabNav'
 import BenchmarkingPage from './pages/BenchmarkingPage'
@@ -17,21 +18,23 @@ const TABS = [
 ]
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('map')
+  const [activeTab, setActiveTab] = useState('benchmarking')
 
   return (
     <AppDataProvider>
-      <div className="flex flex-col h-screen overflow-hidden">
-        <TopBar />
-        <TabNav tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
-        <main className="flex-1 overflow-hidden">
-          {activeTab === 'benchmarking' && <BenchmarkingPage />}
-          {activeTab === 'contract' && <ContractSummaryPage />}
-          {activeTab === 'capacity' && <CapacityPage />}
-          {activeTab === 'data' && <DataManagementPage />}
-          {activeTab === 'map' && <RMCSmartMapPage />}
-        </main>
-      </div>
+      <FilterProvider>
+        <div className="flex flex-col h-screen overflow-hidden bg-gray-50">
+          <TopBar activeTab={activeTab} />
+          <TabNav tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
+          <main className="flex-1 overflow-hidden">
+            {activeTab === 'benchmarking' && <BenchmarkingPage />}
+            {activeTab === 'contract' && <ContractSummaryPage />}
+            {activeTab === 'capacity' && <CapacityPage />}
+            {activeTab === 'data' && <DataManagementPage />}
+            {activeTab === 'map' && <RMCSmartMapPage />}
+          </main>
+        </div>
+      </FilterProvider>
     </AppDataProvider>
   )
 }
