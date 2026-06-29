@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../iSupplyTheme.css";
 @import "leaflet/dist/leaflet.css";
 
 :root {
@@ -15,9 +16,13 @@
 }
 
 body {
-  font-family: 'Sarabun', 'Segoe UI', sans-serif;
-  background: #f5f5f5;
+  font-family: 'Kanit', 'Sarabun', 'Segoe UI', sans-serif;
+  background: #f1f5f9;
   color: #1a1a1a;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 /* Leaflet fix — ensure map tiles render on top of nothing */

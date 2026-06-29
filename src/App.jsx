@@ -23,10 +23,10 @@ export default function App() {
   return (
     <AppDataProvider>
       <FilterProvider>
-        <div className="flex flex-col h-screen overflow-hidden bg-gray-50">
+        <div className="flex min-h-screen flex-col bg-page text-[var(--text)]">
           <TopBar activeTab={activeTab} />
           <TabNav tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
-          <main className="flex-1 overflow-hidden">
+          <main className="main flex-1 overflow-hidden px-4 pb-4 pt-3 md:px-5">
             {activeTab === 'benchmarking' && <BenchmarkingPage />}
             {activeTab === 'contract' && <ContractSummaryPage />}
             {activeTab === 'capacity' && <CapacityPage />}
